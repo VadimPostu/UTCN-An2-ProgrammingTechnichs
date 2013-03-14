@@ -16,7 +16,9 @@ import processor.PolinomeBuilder;
 
 /**
  *
- * @author Vadim Class that builds the application GUI and appeals the functions
+ * @author Vadim 
+ * 
+ * Class that builds the application GUI and appeals the functions
  * that execute the requested operations.
  *
  */

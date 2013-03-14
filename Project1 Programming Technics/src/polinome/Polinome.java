@@ -6,7 +6,9 @@ import java.util.HashMap;
 
 /**
  *
- * @author Vadim Postu Class that stores and performs diverse actions on the
+ * @author Vadim Postu 
+ * 
+ * Class that stores and performs diverse actions on the
  * given polynomials.
  *
  */
@@ -20,8 +22,9 @@ public class Polinome implements IPolinome {
 
     /**
      *
-     * @param exponent - monome exponent  
-     * @param coeficient - monome coeficient
+     * @param exponent  monome exponent  
+     * @param coeficient  monome coeficient
+     * 
      * setMonome - method that puts a monome into the existing polynomial.
      * 
      * 
@@ -34,15 +37,14 @@ public class Polinome implements IPolinome {
             monomes.put(exponent, coeficient);
         }
 
-//       if (monomes.get(exponent) == 0) {
-//            monomes.remove(exponent);
-//        }
+       if (monomes.get(exponent) == 0) {
+            monomes.remove(exponent);
+        }
     }
 
     /**
      *
-     * @return
-     * getMaximumExponent - returns the maximum exponent of the polynomial
+     * @return the maximal value of the exponent in the polinome.
      * 
      */
     @Override
@@ -58,9 +60,9 @@ public class Polinome implements IPolinome {
 
     /**
      *
-     * @return
-     * getExponents - returns a ArrayList containing all the exponents
+     * @return a ArrayList containing all the exponents
      * of the given polynomial function.
+     *
      */
     @Override
     public ArrayList<Integer> getExponents() {
@@ -78,15 +80,13 @@ public class Polinome implements IPolinome {
     /**
      *
      * @param exponent - the exponent who's coefficient we are searching for.
-     * @return
-     * getCoeficietnt - returns the coefficient that belongs to the given
-     * exponent.
+     * @return the coefficient that belongs to the given exponent.
      * 
      */
     @Override
     public int getCoeficient(int exponent) {
         if (!monomes.containsKey(exponent)) {
-            throw new IndexOutOfBoundsException();
+            return 0;
         }
         return (int) monomes.get(exponent);
     }
@@ -94,12 +94,6 @@ public class Polinome implements IPolinome {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        
-        for (int exponent : this.getExponents())
-        { 
-            if(this.getCoeficient(exponent) == 0) monomes.remove(exponent);
-        }
-        
         for (int exponent : this.getExponents()) {
             builder.append(formatMonome(exponent, this.getCoeficient(exponent)));
         }
@@ -121,7 +115,7 @@ public class Polinome implements IPolinome {
         }
         if (exponent == 0) {
             if (exponent == this.getMaximumExponent())
-                 return (coeficient > 0) ? "" + coeficient : coeficient + "";
+                 return "" + coeficient;
             else return (coeficient > 0) ? "+" + coeficient : coeficient + "";
         }
 
@@ -140,10 +134,9 @@ public class Polinome implements IPolinome {
 
     /**
      *
-     * @param polinome
-     * @return
-     * add - method that recieves a polinomyal, and performs the adding operation 
-     * using the polinome that already is stored in the class.
+     * @param polinome the polynome to be added.
+     * @return The sum of the polynome stored in the class and the polinome 
+     * recieved as parameter.
      * 
      */
     @Override
@@ -161,10 +154,10 @@ public class Polinome implements IPolinome {
 
     /**
      *
-     * @param polinome
-     * @return
-     * subtract - method that recieves a polinome and subtracts it from
-     * the polinome stored in the class.
+     * @param polinome the polynome to be substracted.
+     * @return the difference between the polynome stored in the class and
+     * the one recieved as parameter.
+     *
      */
     @Override
     public IPolinome subtract(IPolinome polinome) {
@@ -182,10 +175,10 @@ public class Polinome implements IPolinome {
 
     /**
      *
-     * @param polinome
-     * @return
-     * multiply - method that recieves a polinome and multiplies it with 
-     * the other one stored in the class.
+     * @param polinome the polynome to be multiplied by.
+     * @return product of the polynome stored in the class and the polinome 
+     * recieved as parameter.
+     *
      */
     @Override
     public IPolinome multiply(IPolinome polinome) {
@@ -202,8 +195,7 @@ public class Polinome implements IPolinome {
 
     /**
      *
-     * @return
-     * derivate - derivates the polynomial stored in the class.
+     * @return the derivate of the polynomial stored in the class. 
      * 
      */
     @Override

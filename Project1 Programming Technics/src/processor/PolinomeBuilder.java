@@ -7,7 +7,9 @@ import polinome.Polinome;
 
 /**
  *
- * @author Vadim this class takes the given polynome, checks for eventual
+ * @author Vadim 
+ * 
+ * this class takes the given polynome, checks for eventual
  * spelling mistakes, splitts the given polynome into monomes and returns them 
  * into a general form.
  *
@@ -21,9 +23,8 @@ public class PolinomeBuilder implements IPolinomeBuilder {
 
    /**
     *
-    * @param input
-    * @return method that checks the spelling errors, if there are no such, 
-    * it allows the flow of the application to go on.
+    * @param input the polynome String
+    * @return true if there are no spelling errors, false if there are such.
     * 
     */
    @Override
@@ -51,8 +52,8 @@ public class PolinomeBuilder implements IPolinomeBuilder {
    /**
     *
     * @param input the function parsePolinome recieves the the Polinome string
-    * and returns the polinome instance <coeficient, exponent> pairs.
-    * @return
+    * 
+    * @return the polinome instance <coeficient, exponent> pairs.
     */
    @Override
    public Polinome parsePolinome(String input) {
@@ -93,12 +94,13 @@ public class PolinomeBuilder implements IPolinomeBuilder {
 
    /**
     *
-    * @param monom this function takes each of the monoms of the polynomial
-    * function and changes it to a "coeficient"+"x"+"exponent" form.
+    * @param monom one monome of the polynome.
     *
-    * @return
+    * @return the monome into a axb form, where a is the coefficient and b
+    * is the exponent.
     */
-   public static String convertToGeneralForm(String monom) {
+    @Override
+   public String convertToGeneralForm(String monom) {
       if (!monom.contains("x")) {
          monom = monom + "x0";
       }

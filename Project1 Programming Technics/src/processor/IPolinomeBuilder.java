@@ -12,4 +12,6 @@ public interface IPolinomeBuilder {
    Boolean isPolinomeRepresentationValid(String input);
    
    Polinome parsePolinome(String input);
+   
+   String convertToGeneralForm(String monom);
 }
