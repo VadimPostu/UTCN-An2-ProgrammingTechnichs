@@ -34,9 +34,9 @@ public class Polinome implements IPolinome {
             monomes.put(exponent, coeficient);
         }
 
-        if (monomes.get(exponent) == 0) {
-            monomes.remove(exponent);
-        }
+//        if (monomes.get(exponent) == 0) {
+//            monomes.remove(exponent);
+//        }
     }
 
     /**
@@ -97,7 +97,7 @@ public class Polinome implements IPolinome {
         for (int exponent : this.getExponents()) {
             builder.append(formatMonome(exponent, this.getCoeficient(exponent)));
         }
-        if(this.getMaximumExponent() == 0) {
+        if(this.getCoeficient(this.getMaximumExponent()) == 0) {
             builder.append("0");
         }
         if(this.getMaximumExponent() > 0) {
@@ -113,7 +113,9 @@ public class Polinome implements IPolinome {
             return "";
         }
         if (exponent == 0) {
-            return (coeficient > 0) ? "+" + coeficient : coeficient + "";
+            if (this.getMaximumExponent() == exponent)
+            return (coeficient > 0) ? "" + coeficient : coeficient + "";
+            else return (coeficient > 0) ? "+" + coeficient : coeficient + "";
         }
 
         String exponentString = (exponent == 1) ? "" : exponent + "";
@@ -205,6 +207,7 @@ public class Polinome implements IPolinome {
             if (exp != 0) {
                 result.setMonome(exp - 1, this.getCoeficient(exp) * exp);
             }
+            else result.setMonome(0, 0);
         }
 
         return result;
