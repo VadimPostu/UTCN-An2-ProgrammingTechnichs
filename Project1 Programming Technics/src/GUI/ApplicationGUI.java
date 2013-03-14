@@ -102,7 +102,7 @@ public class ApplicationGUI extends JFrame {
 
             @Override
             public void focusLost(FocusEvent fe) {
-                // maybe validate the control???
+                
             }
         };
 
